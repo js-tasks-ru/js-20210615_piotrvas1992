@@ -8,13 +8,11 @@ export const omit = (obj, ...fields) => {
   const paramsWithValuesList = Object.entries(obj);
   const { ...finalObject } = obj;
 
-  if (paramsWithValuesList.length) {
-    paramsWithValuesList.forEach(arr=>{
-      if (fields.some(field=>field === arr[0])) {
-        delete finalObject[arr[0]];
-      }
-    });
-  }
+  paramsWithValuesList.forEach(arr=>{
+    if (fields.includes(arr[0])) {
+      delete finalObject[arr[0]];
+    }
+  });
 
   return finalObject;
 };
